@@ -1,8 +1,9 @@
 from flask_restx import Api
 from flask import Blueprint
 
-from .main.controller.user_controller import api as user_ns
-from .main.controller.auth_controller import api as auth_ns
+from app.main.controller.user_controller import api as user_namespace
+from app.main.controller.auth_controller import api as auth_namespace
+from app.main.controller.conversation_controller import api as conversation_namespace
 
 blueprint = Blueprint("api", __name__)
 
@@ -13,5 +14,6 @@ api = Api(
     description="Rasa take-home exercise"
 )
 
-api.add_namespace(user_ns, path="/user")
-api.add_namespace(auth_ns)
+api.add_namespace(user_namespace, path="/user")
+api.add_namespace(auth_namespace)
+api.add_namespace(conversation_namespace)

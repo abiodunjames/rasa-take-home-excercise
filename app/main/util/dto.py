@@ -14,3 +14,10 @@ class AuthDto:
         'email': fields.String(required=True, description='The email address'),
         'password': fields.String(required=True, description='The user password '),
     })
+
+class ConversationDto:
+    api = Namespace('conversation', description='conversation related operations')
+    conversation = api.model('conversation', {
+        'response': fields.String(required=True, description='bot reponse'),
+        'request': fields.String(required=True, description='user chat')
+    })

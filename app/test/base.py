@@ -14,7 +14,7 @@ class BaseTestCase(TestCase):
 
     def setUp(self):
         db.create_all()
-        #seed_admin_user()
+        seed_admin_user()
         db.session.commit()
 
     def tearDown(self):
