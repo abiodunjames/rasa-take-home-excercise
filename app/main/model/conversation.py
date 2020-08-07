@@ -1,8 +1,9 @@
 from .. import db
 
+
 class Conversation(db.Model):
     """ Conversation Model for storing user's chat and bot's generated responses """
-    
+
     __tablename__ = "conversation"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

@@ -11,7 +11,7 @@ api = Api(
     blueprint,
     title="Take Home Test",
     version="1.0",
-    description="Rasa take-home exercise"
+    description="Rasa take-home exercise",
 )
 
 api.add_namespace(user_namespace, path="/user")

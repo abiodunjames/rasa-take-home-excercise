@@ -6,13 +6,13 @@ from app.main import db
 from app.main.model.user import User
 from app.test.base import BaseTestCase
 
-class TestUserModel(BaseTestCase):
 
+class TestUserModel(BaseTestCase):
     def test_encode_auth_token(self):
         user = User(
-            email='test@test.com',
-            password='test',
-            registered_on=datetime.datetime.utcnow()
+            email="test@test.com",
+            password="test",
+            registered_on=datetime.datetime.utcnow(),
         )
         db.session.add(user)
         db.session.commit()
@@ -21,9 +21,9 @@ class TestUserModel(BaseTestCase):
 
     def test_decode_auth_token(self):
         user = User(
-            email='test@test.com',
-            password='test',
-            registered_on=datetime.datetime.utcnow()
+            email="test@test.com",
+            password="test",
+            registered_on=datetime.datetime.utcnow(),
         )
         db.session.add(user)
         db.session.commit()
@@ -33,5 +33,5 @@ class TestUserModel(BaseTestCase):
         self.assertTrue(decoded_token == user.id)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
