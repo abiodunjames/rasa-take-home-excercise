@@ -7,7 +7,7 @@ class Conversation(db.Model):
     __tablename__ = "conversation"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    request = db.Column(db.Text(), nullable=False)
+    message = db.Column(db.Text(), nullable=False)
     generated_on = db.Column(db.DateTime, nullable=False)
     response = db.Column(db.Text(), nullable=False, default=False)
 

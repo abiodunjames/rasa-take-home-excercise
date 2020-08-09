@@ -2,17 +2,17 @@ from app.main.model.conversation import Conversation
 from app.main import db
 import datetime
 
-SEED_REQUEST = "hey"
-SEED_RESPONSE = "howdy"
+USER_MESSAGE = "hey"
+BOT_RESPONSE = "howdy"
 
 
-def seed_conversation():
+def seed_conversation() -> None:
     """
     Stores conversation
     """
     conver = Conversation(
-        request=SEED_REQUEST,
-        response=SEED_RESPONSE,
+        message=USER_MESSAGE,
+        response=BOT_RESPONSE,
         generated_on=datetime.datetime.utcnow(),
     )
     db.session.add(conver)

@@ -2,7 +2,7 @@ import unittest
 
 from app.main import db
 from app.main.seed.user import seed_admin_user
-from app.main.seed.conversation import seed_conversation, SEED_REQUEST, SEED_RESPONSE
+from app.main.seed.conversation import seed_conversation, USER_MESSAGE, BOT_RESPONSE
 
 from app.main.model.user import User
 import json
@@ -27,8 +27,9 @@ class TestConversationBlueprint(BaseTestCase):
             response = get_conversation_list(self)
             json_response = json.loads(response.data.decode())
             data = json_response["data"]
-            self.assertTrue(data[0]["request"] == SEED_REQUEST)
-            self.assertTrue(data[0]["response"] == SEED_RESPONSE)
+            print()
+            self.assertTrue(data[0]["message"] == USER_MESSAGE)
+            self.assertTrue(data[0]["response"] == BOT_RESPONSE)
             self.assertTrue(response.content_type == "application/json")
             self.assertEqual(response.status_code, 200)
 

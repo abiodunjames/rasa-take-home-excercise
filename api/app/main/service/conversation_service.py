@@ -1,14 +1,15 @@
 import datetime
 from app.main import db
 from app.main.model.conversation import Conversation
+from typing import List
 
 
-def save_new_conservation(user_chat, bot_response):
+def save_new_conservation(user_chat: str, bot_response: str) -> Conversation:
     """
     Store chat conversation response in the databse
     """
     conversation = Conversation(
-        request=bot_response,
+        message=bot_response,
         response=user_chat,
         generated_on=datetime.datetime.utcnow(),
     )
@@ -17,13 +18,13 @@ def save_new_conservation(user_chat, bot_response):
     return conversation
 
 
-def get_all_conversations():
+def get_all_conversations() -> List[Conversation]:
     """
     Get all conversations saved in the database
     """
     return Conversation.query.all()
 
 
-def save_changes(data):
+def save_changes(data: Conversation) -> None:
     db.session.add(data)
     db.session.commit()

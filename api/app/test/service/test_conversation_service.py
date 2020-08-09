@@ -20,13 +20,13 @@ class TestConversationService(BaseTestCase):
 
     def test_get_all_conversations(self):
         chat = Conversation(
-            request="hey", response="howdy", generated_on=datetime.datetime.utcnow()
+            message="hey", response="howdy", generated_on=datetime.datetime.utcnow()
         )
         db.session.add(chat)
         db.session.commit()
         results = get_all_conversations()
         assert len(results) == 1
-        assert results[0].request == "hey"
+        assert results[0].message == "hey"
         assert results[0].response == "howdy"
 
 

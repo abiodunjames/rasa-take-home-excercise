@@ -6,7 +6,7 @@ SEED_ADMIN_EMAIL = "admin@test.com"
 SEED_ADMIN_PASSWORD = "123456"
 
 
-def seed_admin_user():
+def seed_admin_user() -> None:
     """
     Seed initial admin user. This user will be use to create other non-admin user.
     """

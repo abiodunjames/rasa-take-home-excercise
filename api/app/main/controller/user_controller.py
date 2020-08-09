@@ -4,6 +4,7 @@ from flask_restx import Resource
 from app.main.util.decorator import admin_token_required
 from ..util.dto import UserDto
 from ..service.user_service import save_new_user, get_all_users
+from typing import Dict, Tuple
 
 api = UserDto.api
 user = UserDto.user
@@ -24,7 +25,7 @@ class UserList(Resource):
     @api.expect(user, validate=True)
     @api.response(201, "User successfully created.")
     @api.doc("create a new user")
-    def post(self):
+    def post(self) -> Tuple[Dict[str, str], int]:
         """Creates a new User """
         data = request.json
         return save_new_user(data=data)
