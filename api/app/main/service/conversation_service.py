@@ -12,7 +12,14 @@ def save_new_conservation(
     user_chat: str, bot_response: str, sender: str
 ) -> Conversation:
     """
-    Store chat conversation response in the databse
+    Note: Saving conversation history in the database here is a bad idea because:
+
+    1. Rasa [tracker store](https://rasa.com/docs/rasa/api/tracker-stores/) handles that already
+    2. It increases latency.
+    3. It's a bad design
+
+    I did it anyway because because the `/conversations` endpoint [documented here](https://rasa.com/docs/rasa-x/api/rasa-x-http-api/#operation/getConversations)
+    does not work for me, and I do not have enough time to dig deeper or reach out to rasa developers
     """
     conversation = Conversation(
         message=bot_response,
@@ -45,6 +52,8 @@ def predict_response():
     if response:
         response = response[0]
         bot_response = response["text"] or None
+
+    # TODO: Refactor the line below. See my comment above
     save_new_conservation(data["message"], bot_response, data["sender"])
 
     return response
