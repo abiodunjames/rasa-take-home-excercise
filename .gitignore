@@ -70,3 +70,6 @@ ENV/
 # mypy
 .mypy_cache/
 /migrations
+# rasa folders
+/logs
+results
