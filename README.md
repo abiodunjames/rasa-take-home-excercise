@@ -1,6 +1,6 @@
 ## Training the model
 
-- To train the model, run the command: `cd inference && docker run  -v $(pwd):/app rasa/rasa:1.10.8-full train --domain domain.yml --data data --out models`
+- To train the model, run the command: `(cd inference && docker run  -v $(pwd):/app rasa/rasa:1.10.8-full train --domain domain.yml --data data --out models)`
 
 - Migrate database tables `docker-compose exec api_server python manage.py create_db`
 

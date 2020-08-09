@@ -4,11 +4,15 @@
 
 ## thank
 * thank
-  - utter_noworries
+  - utter_thank
 
 ## goodbye
 * bye
   - utter_bye
+
+## bot
+* bot
+  - utter_bot
 
 ## questions not supported
 * not_supported

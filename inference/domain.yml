@@ -3,24 +3,22 @@ intents:
   - bye
   - thank
   - faq
+  - bot
   - not_supported
-  - out_of_scope:  {triggers: action_out_of_scope}
 
 responses:
-  utter_noworries:
-    - text: No worries!
+  utter_bot:
+    - text: My name is bot. I'm your e-commerce assistance
+  utter_thank:
+    - text: You're welcome
   utter_greet:
     - text: Hi
   utter_bye:
     - text: Bye!
   utter_not_supported:
-    - text: Sorry, I can't help you with that
-
-  utter_out_of_scope:
-    - text: I'm sorry, I do not understand you. Do you have questions on
-        shipping fee or delivery?
+    - text: Sorry, I can't help you with that. Do you any have questions on
+       account registration, shipping or delivery time?
 
 actions:
   - respond_faq
   - action_greet
-  - action_out_of_scope

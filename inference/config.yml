@@ -3,7 +3,6 @@
 language: en
 pipeline:
   - name: WhitespaceTokenizer
-  - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
     analyzer: "char_wb"
@@ -11,7 +10,6 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier
     epochs: 100
-  - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
 
@@ -20,5 +18,4 @@ pipeline:
 policies:
   - name: MemoizationPolicy
   - name: MappingPolicy
-  - name: TwoStageFallbackPolicy
-    nlu_threshold: 0.8
+  - name: KerasPolicy

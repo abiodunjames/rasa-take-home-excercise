@@ -8,13 +8,13 @@
 * greet: Hello there
   - utter_greet
 * thank: thanks a bunch
-  - utter_noworries
+  - utter_thank
 
 ## greet + thanks + goodbye
 * greet: Hey
   - utter_greet
 * thank: thank you
-  - utter_noworries
+  - utter_thank
 * bye: bye bye
   - utter_bye
 
