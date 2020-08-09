@@ -8,13 +8,16 @@ from app.main.model.conversation import Conversation
 from flask import request
 
 
-def save_new_conservation(user_chat: str, bot_response: str) -> Conversation:
+def save_new_conservation(
+    user_chat: str, bot_response: str, sender: str
+) -> Conversation:
     """
     Store chat conversation response in the databse
     """
     conversation = Conversation(
         message=bot_response,
         response=user_chat,
+        sender=sender,
         generated_on=datetime.datetime.utcnow(),
     )
     save_changes(conversation)
@@ -42,7 +45,7 @@ def predict_response():
     if response:
         response = response[0]
         bot_response = response["text"] or None
-    save_new_conservation(data["message"], bot_response)
+    save_new_conservation(data["message"], bot_response, data["sender"])
 
     return response
 

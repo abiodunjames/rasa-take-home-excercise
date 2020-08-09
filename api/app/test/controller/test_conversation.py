@@ -1,5 +1,4 @@
 import json
-import sys
 import unittest
 
 from app.main import db
@@ -10,7 +9,7 @@ from app.test.base import BaseTestCase
 
 def get_conversation_list(self):
     seed_conversation()
-    admin_user_id = 1
+    admin_user_id = 1  # seeded in base.py
     admin = User.query.filter_by(id=admin_user_id).first()
     token = User.encode_auth_token(admin)
     return self.client.get(
@@ -26,7 +25,6 @@ class TestConversationBlueprint(BaseTestCase):
             response = get_conversation_list(self)
             json_response = json.loads(response.data.decode())
             data = json_response["data"]
-            print()
             self.assertTrue(data[0]["message"] == USER_MESSAGE)
             self.assertTrue(data[0]["response"] == BOT_RESPONSE)
             self.assertTrue(response.content_type == "application/json")

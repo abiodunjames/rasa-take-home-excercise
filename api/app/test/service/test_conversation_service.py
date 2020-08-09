@@ -14,12 +14,16 @@ class TestConversationService(BaseTestCase):
     def test_save_new_conversation(self):
         bot_response = "Howdy"
         user_chat = "Hey"
-        result = save_new_conservation(user_chat, bot_response)
+        sender = "test_sender"
+        result = save_new_conservation(user_chat, bot_response, sender)
         self.assertTrue(isinstance(result, Conversation))
 
     def test_get_all_conversations(self):
         chat = Conversation(
-            message="hey", response="howdy", generated_on=datetime.datetime.utcnow()
+            message="hey",
+            response="howdy",
+            sender="test",
+            generated_on=datetime.datetime.utcnow(),
         )
         db.session.add(chat)
         db.session.commit()
@@ -27,6 +31,7 @@ class TestConversationService(BaseTestCase):
         assert len(results) == 1
         assert results[0].message == "hey"
         assert results[0].response == "howdy"
+        assert results[0].sender == "test"
 
 
 if __name__ == "__main__":

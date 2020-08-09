@@ -8,6 +8,7 @@ class Conversation(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     message = db.Column(db.Text(), nullable=False)
+    sender = db.Column(db.Text(), nullable=False)
     generated_on = db.Column(db.DateTime, nullable=False)
     response = db.Column(db.Text(), nullable=True, default="")
 

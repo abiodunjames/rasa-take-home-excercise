@@ -14,6 +14,7 @@ def seed_conversation() -> None:
     conver = Conversation(
         message=USER_MESSAGE,
         response=BOT_RESPONSE,
+        sender="test_sender",
         generated_on=datetime.datetime.utcnow(),
     )
     db.session.add(conver)
