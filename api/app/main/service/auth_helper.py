@@ -3,7 +3,7 @@ from typing import Dict, Tuple, Union
 from app.main.model.user import User
 from werkzeug.local import LocalProxy
 
-from ..service.blacklist_service import save_token
+from app.main.service.blacklist_service import save_token
 
 
 class Auth:

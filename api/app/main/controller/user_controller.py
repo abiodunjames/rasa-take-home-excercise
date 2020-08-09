@@ -4,8 +4,8 @@ from app.main.util.decorator import admin_token_required
 from flask import request
 from flask_restx import Resource
 
-from ..service.user_service import get_all_users, save_new_user
-from ..util.dto import UserDto
+from app.main.service.user_service import get_all_users, save_new_user
+from app.main.util.dto import UserDto
 
 api = UserDto.api
 user = UserDto.user

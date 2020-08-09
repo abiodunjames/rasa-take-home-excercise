@@ -4,8 +4,8 @@ from typing import Union
 import jwt
 from app.main.model.blacklist import BlacklistToken
 
-from .. import db, flask_bcrypt
-from ..config import key
+from app.main import db, flask_bcrypt
+from app.main.config import key
 
 
 class User(db.Model):
