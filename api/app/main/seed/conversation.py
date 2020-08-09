@@ -1,6 +1,7 @@
-from app.main.model.conversation import Conversation
-from app.main import db
 import datetime
+
+from app.main import db
+from app.main.model.conversation import Conversation
 
 USER_MESSAGE = "hey"
 BOT_RESPONSE = "howdy"

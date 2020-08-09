@@ -1,6 +1,7 @@
-from app.main.model.user import User
-from app.main import db
 import datetime
+
+from app.main import db
+from app.main.model.user import User
 
 SEED_ADMIN_EMAIL = "admin@test.com"
 SEED_ADMIN_PASSWORD = "123456"

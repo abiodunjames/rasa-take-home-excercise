@@ -1,13 +1,12 @@
+import json
+import sys
 import unittest
 
 from app.main import db
-from app.main.seed.user import seed_admin_user
-from app.main.seed.conversation import seed_conversation, USER_MESSAGE, BOT_RESPONSE
-
 from app.main.model.user import User
-import json
+from app.main.seed.conversation import BOT_RESPONSE, USER_MESSAGE, seed_conversation
+from app.main.seed.user import seed_admin_user
 from app.test.base import BaseTestCase
-import sys
 
 
 def get_conversation_list(self):

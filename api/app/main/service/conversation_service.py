@@ -1,7 +1,8 @@
 import datetime
+from typing import List
+
 from app.main import db
 from app.main.model.conversation import Conversation
-from typing import List
 
 
 def save_new_conservation(user_chat: str, bot_response: str) -> Conversation:

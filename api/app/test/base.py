@@ -1,7 +1,6 @@
-from flask_testing import TestCase
-
-from app.main.seed.user import seed_admin_user
 from app.main import db
+from app.main.seed.user import seed_admin_user
+from flask_testing import TestCase
 from manage import app
 
 

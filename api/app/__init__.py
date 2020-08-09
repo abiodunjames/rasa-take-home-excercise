@@ -1,9 +1,8 @@
-from flask_restx import Api
-from flask import Blueprint
-
-from app.main.controller.user_controller import api as user_namespace
 from app.main.controller.auth_controller import api as auth_namespace
 from app.main.controller.conversation_controller import api as conversation_namespace
+from app.main.controller.user_controller import api as user_namespace
+from flask import Blueprint
+from flask_restx import Api
 
 blueprint = Blueprint("api", __name__)
 

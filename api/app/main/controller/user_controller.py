@@ -1,10 +1,11 @@
+from typing import Dict, Tuple
+
+from app.main.util.decorator import admin_token_required
 from flask import request
 from flask_restx import Resource
 
-from app.main.util.decorator import admin_token_required
+from ..service.user_service import get_all_users, save_new_user
 from ..util.dto import UserDto
-from ..service.user_service import save_new_user, get_all_users
-from typing import Dict, Tuple
 
 api = UserDto.api
 user = UserDto.user

@@ -1,6 +1,5 @@
-import unittest
-
 import datetime
+import unittest
 
 from app.main import db
 from app.main.model.user import User

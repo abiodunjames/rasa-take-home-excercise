@@ -1,13 +1,12 @@
+import datetime
 import unittest
 
-import datetime
-
 from app.main import db
-from app.main.service.conversation_service import (
-    save_new_conservation,
-    get_all_conversations,
-)
 from app.main.model.conversation import Conversation
+from app.main.service.conversation_service import (
+    get_all_conversations,
+    save_new_conservation,
+)
 from app.test.base import BaseTestCase
 
 

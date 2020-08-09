@@ -1,14 +1,14 @@
-from flask import request, jsonify
-from flask_restx import Resource
-from app.main.util.dto import ConversationDto
-
-from app.main.util.decorator import admin_token_required
-from app.main.service.conversation_service import get_all_conversations
-from app.main.model.conversation import Conversation
-from typing import List
-import requests
 import os
 import sys
+from typing import List
+
+import requests
+from app.main.model.conversation import Conversation
+from app.main.service.conversation_service import get_all_conversations
+from app.main.util.decorator import admin_token_required
+from app.main.util.dto import ConversationDto
+from flask import jsonify, request
+from flask_restx import Resource
 
 conversation = ConversationDto.conversation
 api = ConversationDto.api
