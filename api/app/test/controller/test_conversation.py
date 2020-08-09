@@ -5,14 +5,14 @@ import unittest
 from app.main import db
 from app.main.model.user import User
 from app.main.seed.conversation import BOT_RESPONSE, USER_MESSAGE, seed_conversation
-from app.main.seed.user import seed_admin_user
 from app.test.base import BaseTestCase
 
 
 def get_conversation_list(self):
     seed_conversation()
     admin_user_id = 1
-    token = User.encode_auth_token(admin_user_id)
+    admin = User.query.filter_by(id=admin_user_id).first()
+    token = User.encode_auth_token(admin)
     return self.client.get(
         "/conversation/", headers={"Authorization": token.decode("utf-8")}
     )

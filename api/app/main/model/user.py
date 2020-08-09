@@ -34,7 +34,7 @@ class User(db.Model):
         return flask_bcrypt.check_password_hash(self.password_hash, password)
 
     @staticmethod
-    def encode_auth_token(user_id: int) -> bytes:
+    def encode_auth_token(user: "User") -> bytes:
         """
         Generates the Auth Token
         :return: string
@@ -44,7 +44,8 @@ class User(db.Model):
                 "exp": datetime.datetime.utcnow()
                 + datetime.timedelta(days=1, seconds=5),
                 "iat": datetime.datetime.utcnow(),
-                "sub": user_id,
+                "sub": user.id,
+                "scope": user.admin,
             }
             return jwt.encode(payload, key, algorithm="HS256")
         except Exception as e:
@@ -63,7 +64,7 @@ class User(db.Model):
             if is_blacklisted_token:
                 return "Token blacklisted. Please log in again."
             else:
-                return payload["sub"]
+                return payload["sub"], payload["scope"]
         except jwt.ExpiredSignatureError:
             return "Signature expired. Please log in again."
         except jwt.InvalidTokenError:

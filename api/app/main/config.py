@@ -2,11 +2,6 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-user = os.getenv("POSTGRES_USER")
-password = os.getenv("POSTGRES_PASSWORD")
-database = os.getenv("POSTGRES_DB")
-DATABASE_URL = f"postgres://{user}:{password}@db:5432/{database}"
-
 
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "ahdndbduej174746490@$##%#$##%")
@@ -15,7 +10,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = DATABASE_URL
+    SQLALCHEMY_DATABASE_URI = f'postgres://{os.getenv("POSTGRES_USER")}:{os.getenv("POSTGRES_PASSWORD")}@db:5432/{os.getenv("POSTGRES_DB")}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 

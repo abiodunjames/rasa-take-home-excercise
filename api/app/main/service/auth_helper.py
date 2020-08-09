@@ -13,7 +13,7 @@ class Auth:
             # fetch the user data
             user = User.query.filter_by(email=data.get("email")).first()
             if user and user.check_password(data.get("password")):
-                auth_token = User.encode_auth_token(user.id)
+                auth_token = User.encode_auth_token(user)
                 if auth_token:
                     response_object = {
                         "status": "success",
@@ -61,21 +61,13 @@ class Auth:
         # get the auth token
         auth_token = new_request.headers.get("Authorization")
         if auth_token:
-            resp = User.decode_auth_token(auth_token)
-            if not isinstance(resp, str):
-                user = User.query.filter_by(id=resp).first()
-                if user is not None:
-                    response_object = {
-                        "status": "success",
-                        "data": {
-                            "user_id": user.id,
-                            "email": user.email,
-                            "admin": user.admin,
-                            "registered_on": str(user.registered_on),
-                        },
-                    }
-                    return response_object, 200
-            response_object = {"status": "fail", "message": "Unathourize"}
+            user_id, is_admin = User.decode_auth_token(auth_token)
+            if user_id is not None:
+                response_object = {
+                    "status": "success",
+                    "data": {"user_id": user_id, "admin": is_admin},
+                }
+                return response_object, 200
             return response_object, 401
         else:
             response_object = {
