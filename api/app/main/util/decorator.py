@@ -4,7 +4,7 @@ from app.main.service.auth_helper import Auth
 from typing import Callable
 
 
-def token_required(f):
+def token_required(f: Callable) -> Callable:
     @wraps(f)
     def decorated(*args, **kwargs):
 
