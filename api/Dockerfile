@@ -8,11 +8,6 @@ RUN pip install -r requirements.txt
 # Add source code
 ADD . /app
 
-
-# setup database
-RUN python manage.py db init
-RUN python manage.py db migrate --message "initial database migration"
-
 EXPOSE 5000
 
 CMD ["python","manage.py", "run"]

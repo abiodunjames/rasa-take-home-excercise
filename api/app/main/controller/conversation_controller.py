@@ -1,10 +1,11 @@
-import os
-import sys
 from typing import List
 
 import requests
 from app.main.model.conversation import Conversation
-from app.main.service.conversation_service import get_all_conversations
+from app.main.service.conversation_service import (
+    get_all_conversations,
+    predict_response,
+)
 from app.main.util.decorator import admin_token_required
 from app.main.util.dto import ConversationDto
 from flask import jsonify, request
@@ -29,19 +30,9 @@ class ConversationList(Resource):
 
 @api.route("/webhook")
 class ConversationWebhook(Resource):
-    """
-       Predict response
-    """
-
     @api.doc("conversation webhook")
     @api.expect(conversation, validate=True)
     def post(self):
-        # Todo: Refactor this block later
-        inference_endpoint = os.getenv(
-            "INFERENCE_ENDPOINT", "http://inference_server:5005/webhooks/rest/webhook"
-        )
-        data = request.get_json()
-        prediction = requests.post(inference_endpoint, json=data)
-        response = prediction.json()
-
+        """ Predict response """
+        response = predict_response()
         return response, 200

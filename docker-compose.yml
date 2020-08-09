@@ -1,6 +1,12 @@
 ---
-version: '2'
+version: '3'
 services:
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+     - .env
   api_server:
     build:
       context: ./api
@@ -11,6 +17,7 @@ services:
       - '5000:5000'
     depends_on:
       - inference_server
+      - db
     env_file:
        - .env
 
@@ -33,3 +40,6 @@ services:
         - ./actions:/app/actions:delegated
   redis:
     image: redis:6.0.6
+
+volumes:
+  postgres_data:

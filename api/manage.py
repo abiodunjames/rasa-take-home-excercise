@@ -26,6 +26,17 @@ def run():
 
 
 @manager.command
+def create_db():
+    """
+    This will drop database tables and recreate them.
+    Run this command once.
+    """
+    db.drop_all()
+    db.create_all()
+    db.session.commit()
+
+
+@manager.command
 def seed():
     """ Populate the db with admin credentials """
     seed_admin_user()
