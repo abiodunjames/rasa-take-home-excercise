@@ -13,6 +13,7 @@ def seed_admin_user() -> None:
     """
     user = User(
         email=SEED_ADMIN_EMAIL,
+        username=SEED_ADMIN_EMAIL,
         password=SEED_ADMIN_PASSWORD,
         registered_on=datetime.datetime.utcnow(),
         admin=True,

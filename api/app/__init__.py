@@ -13,6 +13,6 @@ api = Api(
     description="Rasa take-home exercise",
 )
 
-api.add_namespace(user_namespace, path="/user")
+api.add_namespace(user_namespace, path="/users")
 api.add_namespace(auth_namespace)
-api.add_namespace(conversation_namespace)
+api.add_namespace(conversation_namespace, path="/conversations")

@@ -8,7 +8,7 @@ from app.test.base import BaseTestCase
 
 def register_user(self):
     return self.client.post(
-        "/user/",
+        "/users/",
         data=json.dumps(
             dict(email="joe@gmail.com", username="username", password="123456")
         ),

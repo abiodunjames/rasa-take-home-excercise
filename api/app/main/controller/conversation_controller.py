@@ -25,7 +25,7 @@ class ConversationList(Resource):
     @api.marshal_list_with(conversation, envelope="data")
     def get(self) -> List[Conversation]:
         """List all saved conversations"""
-        return get_all_conversations()
+        return get_all_conversations(), 200
 
 
 @api.route("/webhook")

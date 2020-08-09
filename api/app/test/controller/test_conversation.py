@@ -14,7 +14,7 @@ def get_conversation_list(self):
     admin = User.query.filter_by(id=admin_user_id).first()
     token = User.encode_auth_token(admin)
     return self.client.get(
-        "/conversation/", headers={"Authorization": token.decode("utf-8")}
+        "/conversations/", headers={"Authorization": token.decode("utf-8")}
     )
 
 
