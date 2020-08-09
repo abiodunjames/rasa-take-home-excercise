@@ -8,7 +8,7 @@ from app.main.seed.user import seed_admin_user
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
-app = create_app(os.getenv("BOILERPLATE_ENV") or "dev")
+app = create_app(os.getenv("APP_ENV") or "dev")
 app.register_blueprint(blueprint)
 
 app.app_context().push()
