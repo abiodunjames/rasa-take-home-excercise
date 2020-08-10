@@ -11,7 +11,8 @@ from app.main.util.dto import ConversationDto
 from flask import jsonify, request
 from flask_restx import Resource
 
-conversation = ConversationDto.conversation
+conversation_request = ConversationDto.request
+conversation_response = ConversationDto.response
 api = ConversationDto.api
 
 
@@ -22,7 +23,7 @@ api = ConversationDto.api
 class ConversationList(Resource):
     @api.doc("list_all_conversations")
     @admin_token_required
-    @api.marshal_list_with(conversation, envelope="data")
+    @api.marshal_list_with(conversation_response, envelope="data")
     def get(self) -> List[Conversation]:
         """List all saved conversations"""
         return get_all_conversations(), 200
@@ -31,7 +32,7 @@ class ConversationList(Resource):
 @api.route("/webhook")
 class ConversationWebhook(Resource):
     @api.doc("conversation webhook")
-    @api.expect(conversation, validate=True)
+    @api.expect(conversation_request, validate=True)
     def post(self):
         """ Predict response """
         response = predict_response()

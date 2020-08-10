@@ -195,7 +195,6 @@ docker-compose exec api_server python manage.py test
 ```
 
 
-
 ## Deployment and Scaling
 
 _To talk about scaling an application, we first need to deploy or run it. Out of preference, I've chosen AWS as my preferred cloud provider for this guide._

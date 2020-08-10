@@ -26,11 +26,19 @@ class AuthDto:
 
 class ConversationDto:
     api = Namespace("conversation", description="conversation related operations")
-    conversation = api.model(
-        "conversation",
+    response = api.model(
+        "conversation_response",
         {
             "sender": fields.String(required=True, description="sender identifier"),
             "message": fields.String(required=True, description="sender message"),
             "response": fields.String(required=False, description="predicted response"),
+        },
+    )
+
+    request = api.model(
+        "conversation_request",
+        {
+            "sender": fields.String(required=True, description="sender identifier"),
+            "message": fields.String(required=True, description="sender message"),
         },
     )
