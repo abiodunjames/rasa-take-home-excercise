@@ -1,4 +1,3 @@
-A colleague of yours submitted the following code in a change request to be reviewed by you. This code will be merged after your review and shipped to users. The goal is to create a micro service with an HTTP API that allows employees to request vacation days. This API should forward a request to a number of internal human resource APIs to manage vacation days and convert the incoming JSON payload to XML (the HR systems are legacy systems...).
 
 If you want to run the code locally, make sure to run python 3 and install:
 _Python Recommended: Execute in an isolated (virtual) environment. Tools: venv, pipenv_
@@ -19,10 +18,11 @@ import async_timeout
 from flask import Flask, request, abort
 
 
-loop = asyncio.new_event_loop()
+loop = asyncio.new_event_loop() # see my comment below
+
 app = Flask(__name__)
 
-
+# Please remove async from this method
 async def incoming_2_outgoing_payload(payload):
     """Convert json to xml."""
     from decoder import Dict2XML
@@ -101,19 +101,13 @@ def index():
  app.run(debug=False, use_reloader=False)
 ```
 
-A) Identify and mark any issues with the change request. Pretend you are the reviewer of the change request.
-
-B) Running the code results in RuntimeError: There is no current event loop in thread 'Thread-1'. This issue is beyond your colleagues ken. How would you help him fix this issue? What is the inderline issue?
-
-
-
 ### Code Review
 
 You're likely using Flask version >= 1.0. The development server for Flask version >=1.0 has threaded mode enabled by default. With threaded set to True, requests are each handled in a new thread.
 
-If you disable threading below, Flask development server runs in a single threaded mode and requests can wait in turn to be processed.
+If you disable threading as shown below, Flask development server will run in a single threaded mode and requests can wait in turn to be processed.
 
-```pytho
+```python
     app.run(debug=False, threaded=False, use_reloader=False)
 ```
 
@@ -144,3 +138,7 @@ pip install dict2xml
 ```
 
 For the `fetch()` method, Invalid or unreachable URLs will raise exceptions and we should handle them gracefully.
+
+Please remove `async` from `incoming_2_outgoing_payload(payload)`
+
+It's better to use swagger to document APIs. Could you please use swagger?
