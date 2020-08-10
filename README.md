@@ -1,9 +1,11 @@
+# Go to Section
+
+1. [Chat bot exercise](#chat-bot-excercise)
+2. [Code review excercise](docs/review.md)
 
 
 
-## Virtual Assistance
-
-
+## Chat Bot Excercise
 ### Key Requirements
 
 *   A way to ensure that messages are not responded to out-of-order.
@@ -38,7 +40,7 @@ Here are the technical decisions I made and why I made them.
 
 
 
-## How it works (non-technical audience)
+## A. How it works (non-technical audience)
 
 _In an audience of non-technical people, you would find different kinds of stakeholders. It's essential to know the profile of the stakeholders to adjust your language accordingly._
 
@@ -73,7 +75,7 @@ The virtual assistant uses AI to engage with customers just like our support tea
 
 
 
-## How it works (technical)
+## B. How it works (technical)
 
 
 
@@ -93,11 +95,9 @@ The virtual assistant uses AI to engage with customers just like our support tea
 
 *   **Redis** : Stores all conversations
 
-*   **Postregres**:  Store users credentials and tokens
+*   **Postgres**:  Store users credentials and revoked access tokens
 
     **_Note: API Service and Authentication service are coupled together at the moment_**
-
-
 
 
 ## Usage
@@ -228,4 +228,8 @@ You can scale the service by configuring Auto Scaling, which adjusts the desired
 
 ### Scaling Redis
 
-Since all conversations are stored in Redis stores, eventually, it would grow, and one needs to scale horizontally. One approach is to scale horizontally by adding more nodes to the cluster. See[ scale-up Redis clusters with replicas](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.RedisReplGrps.ScaleUp.html)
+Since all conversations are stored in a Redis store, eventually, it would grow, and one needs to scale horizontally. One approach is to scale horizontally by adding more nodes to the cluster. See[ scale-up Redis clusters with replicas](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.RedisReplGrps.ScaleUp.html)
+
+
+
+## Challenges
